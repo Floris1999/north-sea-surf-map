@@ -39,7 +39,7 @@
             </div>
 
             {#if $showWind}
-                <div class="card">
+                <div class="card" style="border-color: #04aa6d">
                     <svg
                         width="150"
                         height="150"
@@ -123,7 +123,7 @@
             {/if}
 
             {#if $showWaves}
-                <div class="card">
+                <div class="card" id="wave" style="border-color: #1d4ed8;">
                     <div class="wave">
                         <h3>Boei: {wave[0].locationCode}</h3>
                         <svg
@@ -193,7 +193,7 @@
             {/if}
 
             {#if $showTemp}
-                <div class="card">
+                <div class="card" style="border-color: #b91c1c">
                     <div style="width: 80%;">
                         <h3>Boei: {temp[0].locationCode}</h3>
                         <h2>Wetsuit advies bij {temp[0].latestValue}°:</h2>
@@ -202,13 +202,52 @@
                                 <th>Wetsuit</th>
                                 <th>Gloves </th>
                                 <th>Booties</th>
-                                <th>Cap    </th>
+                                <th>Cap </th>
                             </tr>
                             <tr>
                                 <td>5 mm</td>
-                                <td><svg fill="none" stroke="currentColor" viewBox="0 0 32 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></td>
-                                <td><svg fill="none" stroke="currentColor" viewBox="0 0 32 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></td>
-                                <td><svg fill="none" stroke="currentColor" viewBox="0 0 32 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></td>
+                                <td
+                                    ><svg
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 32 24"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        ><path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M5 13l4 4L19 7"
+                                        /></svg
+                                    ></td
+                                >
+                                <td
+                                    ><svg
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 32 24"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        ><path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M5 13l4 4L19 7"
+                                        /></svg
+                                    ></td
+                                >
+                                <td
+                                    ><svg
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 32 24"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        ><path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M5 13l4 4L19 7"
+                                        /></svg
+                                    ></td
+                                >
                             </tr>
                         </table>
 
@@ -217,6 +256,11 @@
                         <p>{tempDate.toISOString().split("T")[0]}</p>
                     </div>
                 </div>
+            {/if}
+
+
+            {#if !$showTemp && !$showWaves && !$showWind}
+                <h2>Alle filters uitgeschakelt</h2>
             {/if}
         </div>
     </div>
@@ -256,6 +300,7 @@
     #wetsuit th {
         border: 1px solid #ddd;
         padding: 8px;
+        font-size: 14px;
         width: 25%;
     }
 
@@ -264,6 +309,7 @@
     }
 
     .card {
+        border: 1px solid;
         margin-top: 5px;
         margin-bottom: 5px;
         background-color: #191932;
@@ -278,13 +324,19 @@
 
     .contents {
         height: 100vh;
-        min-width: 240px;
+        min-width: 42vh;
         border-radius: 6px;
         padding: 16px;
         background: #000000;
         display: flex;
         flex-direction: column;
         pointer-events: auto;
+    }
+
+    .btn {
+        background-color: #191932;
+        color: white;
+        font-size: 16px;
     }
 
     h2 {

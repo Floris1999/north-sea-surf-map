@@ -14,9 +14,9 @@
 
 	let map;
 
-	const waveColor = "#324aa8";
-	const windColor = "#ffa461";
-	const tempColor = "#fc0820";
+	const waveColor = "#0000cd";
+	const windColor = "#04aa6d";
+	const tempColor = "#b91c1c";
 
 	const firstProjection =
 		'PROJCS["ETRS89_UTM_zone_31N",GEOGCS["GCS_ETRS_1989",DATUM["D_ETRS_1989",SPHEROID["GRS_1980",6378137,298.257222101]],PRIMEM["Greenwich",0],UNIT["Degree",0.017453292519943295]],PROJECTION["Transverse_Mercator"],PARAMETER["latitude_of_origin",0],PARAMETER["central_meridian",3],PARAMETER["scale_factor",0.9996],PARAMETER["false_easting",500000],PARAMETER["false_northing",0],UNIT["Meter",1]]';
