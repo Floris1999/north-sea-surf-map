@@ -122,11 +122,17 @@
 			icon,
 		}).addTo(map).bindPopup(`
 		<div>${location.properties.name}</div> 
-				<table id="customers">
+				<table>
   <tr>
-    <th>Company</th>
-    <th>Contact</th>
+    <th>latestValue</th>
+    <th>dateTime</th>
   </tr>
+  
+  <tr>
+    <td>${location.properties.measurements[0].latestValue}</td>
+    <td>${location.properties.measurements[0].dateTime}</td>
+  </tr>
+
 				`);
 	}
 
@@ -161,9 +167,6 @@
 				}
 			}
 		});
-
-		console.log(array1);
-	
 		return array1;
 	}
 
@@ -286,6 +289,8 @@
 			openModal(Modal, {
 				title: `IJmuiden aan zee`,
 				message: "This is an alert",
+				temp: closestTempMeasure.layer.options.icon.measurements,
+				wind: closestWindMeasure.layer.options.icon.measurements,
 				wave: closestWaveMeasure.layer.options.icon.measurements,
 				onCloseModel: () => {
 					closeModal();
@@ -362,16 +367,21 @@
 
 <link
 	rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+
+<link
+	rel="stylesheet"
 	href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
 	integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
 	crossorigin=""
 />
 
-<div class="map" style="height:100%;width:100%" use:mapAction />
-
-<Modals>
-	<div slot="backdrop" class="backdrop" />
-</Modals>
+<div class="map" style="height:100%;width:100%" use:mapAction>
+	<Modals>
+		<div slot="backdrop" class="backdrop" />
+	</Modals>
+</div>
 
 <style>
 	.map :global(.marker-text) {
