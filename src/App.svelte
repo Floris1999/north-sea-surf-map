@@ -27,6 +27,7 @@
 			initialView,
 			7
 		);
+
 		L.tileLayer(
 			"https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
 			{
@@ -37,8 +38,12 @@
 			}
 		).addTo(m);
 
+		L.control.scale({ imperial: false, position: "bottomright" }).addTo(m);
+
 		return m;
 	}
+
+	// L.control.scale().addTo(map);
 
 	let toolbar = L.control({ position: "bottomleft" });
 	let toolbarComponent;
@@ -62,6 +67,9 @@
 
 		return div;
 	};
+
+	// let scale = L.control.scale({ position: "bottomright", metric: false });
+	// scale.addTo(map);
 
 	toolbar.onRemove = () => {
 		if (toolbarComponent) {
